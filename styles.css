@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+ 
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('mao.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+h1 {
+color: #ccc;
+}
+
+.chat-area {
+    height: 400px;
+    max-height: 500px; /* Defina a altura máxima desejada para a área de chat */
+    overflow-y: auto; /* Adicione uma barra de rolagem vertical quando necessário */
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 60rem;
+    margin-bottom: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: #fff;
+}
+
+.chat-message {
+    margin-bottom: 1rem;
+}
+
+.user {
+    align-self: flex-end;
+    background-color: #dcf8c6;
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+.assistant {
+    align-self: flex-start;
+    background-color: #e6f5ff;
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+.input-area {
+    display: flex;
+    width: 80%;
+    max-width: 60rem;
+}
+
+.input-field {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+button {
+    padding: 0.5rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 1rem;
+}

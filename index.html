@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>AI Health Platform Prototype</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>AI Health Platform Prototype</h1>
+        <div class="chat-area" id="chatArea">
+            <div class="chat-message assistant">
+                <p>Hello!<br><br> I'm AI Health Platform! How can I assist you today?</p>
+            </div>
+
+
+        </div>
+        <form class="input-area" onsubmit="sendMessage(event)">
+            <input type="text" class="input-field" id="messageInput" placeholder="Type your message here...">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script>
+        // Defina um índice global para controlar a ordem das respostas
+        var responseIndex = 0;
+
+        function sendMessage(event) {
+            event.preventDefault(); // Prevent the default form submission
+            var messageInput = document.getElementById("messageInput");
+            var messageText = messageInput.value.trim();
+            if (messageText === "") return; // If the message is empty or only contains whitespace, do nothing
+            var chatArea = document.getElementById("chatArea");
+            var newMessage = document.createElement("div");
+            newMessage.className = "chat-message user";
+            newMessage.innerHTML = "<p>" + messageText + "</p>";
+            chatArea.appendChild(newMessage);
+
+            // Array com as mensagens de resposta
+            var responses = [
+            "Thank you for your message! <br> <br> In order to achieve satisfactory results, we need you to provide us with some information. <br> The more detailed and accurate the information provided, the more precise the analysis and recommendations will be. Shall we begin?",
+
+"Enter the Patient's Name:",
+
+"Enter the Patient's Age:",
+
+"Enter the Patient's Gender:",
+
+"Enter the Patient's Height:",
+
+"Enter the Patient's Weight:",
+
+"Enter the Patient's Ethnicity:",
+
+"Thank you for the information. <br> <br> Now let's move on to the Second Stage, which deals with medical history. Shall we begin?",
+
+"Please provide the Medical History below: <br><br> Family history of chronic diseases <br> Personal medical history <br> Current medications <br> Known allergies <br> Previous surgeries",
+
+"Thank you for the information!<br> <br>  Now let's proceed to the Third Stage to understand a bit more about Lifestyle and Habits. Shall we begin?",
+
+"Level of physical activity (sedentary, moderate, active):",
+
+"Usual diet (vegetarian, omnivore, specific diet, etc.):",
+
+"Alcohol consumption (frequency and quantity):",
+
+"Smoking (if yes, daily/weekly quantity):",
+
+"Now let's move on to the Fourth Stage where we'll need the Biometric Data. Shall we begin?",
+
+"Blood pressure levels:",
+
+"Cholesterol levels:",
+
+"Glucose levels:",
+
+"Abdominal circumference:",
+
+"Thank you for the information! <br><br> Would you like to check the result now?",
+
+"Based on the information provided, we recommend the following actions to promote health and prevent chronic diseases: <br><br> Balanced Diet: Continue prioritizing a diet rich in vegetables, fruits, whole grains, and lean proteins. Avoid processed foods and those high in added sugars.<br> <br> Regular Physical Activity: Maintain your current level of physical activity, aiming to engage in aerobic exercises such as walking, running, or swimming at least three times a week.<br> <br> Glucose Monitoring: Given the family history of type 2 diabetes, it is important to regularly monitor blood glucose levels. We recommend regular consultations with a doctor for evaluation.<br> <br> Weight Control: Continue monitoring your weight and BMI, aiming to stay within a healthy range. Small changes in diet and lifestyle can help achieve this goal.<br> <br> Avoid Smoking and Limit Alcohol Consumption: Continue with your healthy lifestyle, avoiding smoking and limiting alcohol consumption to special occasions. <br> <br>"
+            ];
+
+            // Verifica se o índice ultrapassou o limite de respostas
+            if (responseIndex >= responses.length) {
+                responseIndex = 0; // Se sim, retorna ao início do array
+            }
+
+            var responseMessage = responses[responseIndex]; // Obtém a mensagem de resposta
+            responseIndex++; // Incrementa o índice para a próxima resposta
+
+            var assistantMessage = document.createElement("div");
+            assistantMessage.className = "chat-message assistant";
+            assistantMessage.innerHTML = "<p>" + responseMessage + "</p>";
+            chatArea.appendChild(assistantMessage);
+
+            // Scroll to the bottom of the chat area
+            chatArea.scrollTop = chatArea.scrollHeight;
+            messageInput.value = ""; // Clear the input field after sending the message
+        }
+    </script>
+</body>
+
+</html>
